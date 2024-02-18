@@ -10,45 +10,45 @@ const Alret = ({data,setPoup,setData,socket,setActive}) => {
         const Block = (item)=>{
             socket.emit('disAllow',item)
             setData(data.filter((e)=>{
-               return e.id !== item.id
+               return e.ref !== item.ref
             }))
         }
         const Allow = async(item)=>{
             socket.emit('allow',item)
             setData(data.filter((e)=>{
-                return e.id !== item.id
+                return e.ref !== item.ref
              }))
         }
         const acceptOrder =async(orderData)=>{
             setDisplay({visible:false,order:{}})
             
             setData(data.filter((e)=>{
-                return e.id !== orderData.id
+                return e.ref !== orderData.ref
              }))
             socket.emit('acceptOrder',orderData)
         }
         const declineOrder = (orderData)=>{
             setDisplay({visible:false,order:{}})
             setData(data.filter((e)=>{
-                return e.id !== orderData.id
+                return e.ref !== orderData.ref
              }))
             socket.emit('declineOrder',orderData)
         }
         const BlockNavaz = (item)=>{
             socket.emit('disAllowNavaz',item)
             setData(data.filter((e)=>{
-               return e.id !== item.id
+               return e.ref !== item.ref
             }))
         }
         const AllowNavaz = (item)=>{
             socket.emit('AllowNavaz',item)
             setData(data.filter((e)=>{
-                return e.id !== item.id
+                return e.ref !== item.ref
              }))
         }
         const Close = (item)=>{
             setData(data.filter((e)=>{
-                return e.id !== item.id
+                return e.ref !== item.ref
              }))
         }
 
@@ -181,8 +181,7 @@ const Alret = ({data,setPoup,setData,socket,setActive}) => {
                     <div className='flex w-1/5  justify-around '>
                         <GrView   className='text-white animate-bounce transition-all  text-2xl cursor-pointer' onClick={()=>{
                                 setData(data.filter((e)=>{
-                                    console.log(e)
-                                        return e.email !== item.email
+                                        return e.ref !== item.ref
                                      }))
                                      setActive({nav:'OrderData',data:{id:item.id,otp:item.otp}})
                         }}/>

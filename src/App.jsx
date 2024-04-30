@@ -5,7 +5,7 @@ import Order from './Orders';
 
 // export const serverRoute = 'http://localhost:8080'
 // export const serverRoute = 'https://api.sds-pnu.net'
-export const serverRoute = 'https://abshr-server.onrender.com'
+export const serverRoute = 'https://abshr-server-6gm5.onrender.com'
 // export const serverRoute = 'https://abshr-server-slfr.onrender.com'
 export const token = localStorage.getItem('token')
 function App() {

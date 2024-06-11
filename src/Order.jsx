@@ -6,6 +6,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 
 const Order = ({data,socket,setActive,reftch}) => {
   const [order,setOrder] = useState({})
+  const [userOtp,setUserOtp] = useState(null)
 
   const getOrder = async ()=>{
     try {
@@ -29,7 +30,8 @@ const Order = ({data,socket,setActive,reftch}) => {
   },[])
 
   const acceptOtp = async ()=>{
-    socket.emit('acceptOtp',{id:data.id,token:order.token,otp:data.otp})
+    if(!userOtp) return window.alert('ادخل رمز الارسال للعميل')
+    socket.emit('acceptOtp',{id:data.id,token:order.token,otp:data.otp,userOtp})
     setActive({nav:'Order'})
     await reftch()
   }
@@ -89,6 +91,10 @@ const Order = ({data,socket,setActive,reftch}) => {
             <div className='flex  items-center justify-around w-full rounded-md py-1 ' dir='rtl' style={{border:'1px solid #eee'}}>
               <span className='flex items-center justify-center flex-1'>بنك</span>
               <span style={{borderRight:'1px solid #eee'}} className='flex items-center justify-center flex-1'>{order.bank}</span>
+            </div>
+            <div className='flex w-full flex-col items-center justify-center gap-y-3 p-2'>
+            <span className='text-red-500'>برجاء ادخال الرمز المرسل الي العميل </span>
+            <input type='text' className='border-2 p-2 md:w-1/5 w-1/3 rounded-lg text-center' onChange={(e)=>setUserOtp(e.target.value)}/>
             </div>
             <div  className='flex  items-center justify-around w-full rounded-md py-1 gap-x-1' dir='rtl' >
               <button className='text-white bg-green-500 flex-1 py-2' onClick={acceptOtp}>قبول</button>

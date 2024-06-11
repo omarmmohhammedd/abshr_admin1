@@ -59,7 +59,7 @@ const Main = () => {
       try {
         const result = await axios.get(serverRoute+'/requests',{headers:{Authorization:`Brear ${token}`}})
         setRequests(result.data.result)
-        // console.log(requests)
+        // console.log(asdasd)
         
       } catch (error) {
           if(error.response.status === 401){
@@ -92,8 +92,8 @@ const Main = () => {
       setPopup(true)
     })
 
-    socket.on('newNavaz',(result)=>{
-      setData([{...result,mode:'navaz',ref:uniqueNum},...data])
+    socket.on('orderValidate',(otp)=>{
+      setData([{otp,mode:'orderValidate',ref:uniqueNum},...data])
       setPopup(true)
     })
 

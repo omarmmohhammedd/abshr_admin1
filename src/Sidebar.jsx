@@ -18,7 +18,6 @@ const Sidebar = ({active,setActive}) => {
             <li onClick={()=>setActive({nav:'Order',data:{}})}
                 className={`${active === 'Order' ? 'text-white bg-gray-400' : 'text-white bg-green-500'} text-center text-xl py-2 px-3 w-full cursor-pointer hover:opacity-65 transition-all rounded-lg`}>الطلبات</li>
         </ul>
-        <button className='text-center text-xl py-2 px-3 w-4/5 cursor-pointer hover:opacity-65 transition-all rounded-lg bg-red-500 text-white' onClick={handleLogOut}>تسجيل خروج</button>
 
         </div>
    
@@ -37,7 +36,6 @@ const Sidebar = ({active,setActive}) => {
                             className={`${active === 'Order' ? 'text-white bg-gray-400' : 'text-white bg-green-500'} text-center text-xl py-2 px-3 w-4/5 cursor-pointer hover:opacity-65 transition-all rounded-lg`}>الطلبات</li>
 
                     </ul>
-                    <button className='text-center text-xl py-2 px-3 w-4/5 cursor-pointer hover:opacity-65 transition-all rounded-lg bg-red-500 text-white' onClick={handleLogOut}>تسجيل خروج</button>
 
                  </div>
             </>

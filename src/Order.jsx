@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { serverRoute, token } from './App'
+import { serverRoute } from './App'
 import { FaArrowRight } from 'react-icons/fa6'
 
 const Order = ({data,socket,setActive,reftch}) => {
@@ -10,13 +10,12 @@ const Order = ({data,socket,setActive,reftch}) => {
 
   const getOrder = async ()=>{
     try {
-      const order = await axios.get(serverRoute+`/order/${data.id}`,{headers:{'Authorization':`Bearer ${token}`}})
+      const order = await axios.get(serverRoute+`/order/${data.id}`)
       setOrder(order.data.order)
+      console.log(order)
     } catch (error) {
-      if(error.response.status === 401){
-        window.location.href='/login'
-        localStorage.removeItem('token')
-      }else if (error.response.status === 404){
+      console.log(error)
+   if (error.response.status === 404){
           window.alert('Order Not Found')
       }
     }

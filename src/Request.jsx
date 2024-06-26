@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { serverRoute, token } from './App'
+import { serverRoute  } from './App'
 import { FaDoorOpen } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { FaXmark } from "react-icons/fa6";
@@ -26,7 +26,7 @@ const Request = ({socket,setLoading,refetch,requests,loading}) => {
   const deleteRequest = async(request)=>{
     try {
       setLoading({start:true,id:request._id})
-       await axios.delete(serverRoute+`/request/${request._id}`,{headers:{'Authorization':`Bearer ${token}`}}).then(async()=>   await refetch())
+       await axios.delete(serverRoute+`/request/${request._id}`).then(async()=>   await refetch())
     } catch (error) {
       
     }finally{

